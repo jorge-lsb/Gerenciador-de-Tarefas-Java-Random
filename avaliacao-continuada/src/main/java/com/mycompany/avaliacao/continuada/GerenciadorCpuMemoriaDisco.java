@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.avaliacao.continuada;
-
+// IMPORTANDO CLASSE RANDOM
 import java.util.Random;
 
 /**
@@ -441,22 +441,29 @@ public class GerenciadorCpuMemoriaDisco extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    // CRIANDO VARIAVEIS GLOBAIS
+    
     Integer maxCpu = 0,minCpu = 100,contador = 0,somaCpu = 0,maxRam = 0,minRam = 100,somaRam = 0,maxDisc = 0,minDisc = 100,somaDisc = 0;
     Double medCpu,medRam,medDisc;
     
     private void btnLeituaDeDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeituaDeDadosActionPerformed
+        //CRIANDO VARIAVEL ALEATORIO
         Random aleatorio = new Random();
         
+        //CRIANDO VARIAVEIS ALEATORIA PARA VALOR DE CPU, RAM, DISCO
         Integer cpuBarRandom = aleatorio.nextInt(101);
         Integer ramBarRandom = aleatorio.nextInt(101);
         Integer discBarRandom = aleatorio.nextInt(101);
         
+        //SOMANDO O TODAS AS VARIAVEIS ALEATORIA A CADA CLICK NO BOTÃO
         somaCpu += cpuBarRandom;
         somaRam += ramBarRandom;
         somaDisc += discBarRandom;
         
+        // CONTADOR DE CLIQUES NO BOTÃO
         contador++;
         
+        //MÉDIA DA CPU, RAM, DISCO
         medCpu = Double.valueOf(somaCpu) / Double.valueOf(contador);
         lblCpuMed.setText(String.format("%.1f ", medCpu));
         
@@ -466,14 +473,17 @@ public class GerenciadorCpuMemoriaDisco extends javax.swing.JFrame {
         medDisc = Double.valueOf(somaDisc) / Double.valueOf(contador);
         lblDiscMed.setText(String.format("%.1f ", medDisc));
         
+        //ATRIBUINDO VALOR ALEATORIO PARA AS BARRA DE PROGRESSO
         pbarCpu.setValue(cpuBarRandom);
         pbarMemoria.setValue(ramBarRandom);
         pbarDisco.setValue(discBarRandom);
         
+        //ATRIBUINDO VALORES ALEATORIOS A PAINEL GERAL
         lblUltCpu.setText(String.format("%d %%", cpuBarRandom));
         lblUltRam.setText(String.format("%d %%", ramBarRandom));
         lblUltDisc.setText(String.format("%d %%", discBarRandom));
         
+        // DEFININDO MINIMO E MAXIMO DE CPU, RAM, DISCO
         if (cpuBarRandom > maxCpu){
             maxCpu = cpuBarRandom;
             lblCpuMax.setText(String.format("%d %%", maxCpu));
